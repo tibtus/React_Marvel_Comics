@@ -22,10 +22,20 @@ class MarvelService {
         return this._transformCharacter(res.data.results[0]);
     }
 
+    checkedDesc = (text) => {
+        if (text === null || text === "" || text === 0) {
+            return 'Описание персонажа отсутствует'
+        } else if (text.length > 40){
+            return text.slice(0, 40) + ' ...'
+        } else {
+            return text
+        }
+    }
+
     _transformCharacter = (char) => {
         return {
             name: char.name,
-            description: char.description,
+            description: this.checkedDesc(char.description),
             thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
             homepage:char.urls[0].url,
             wiki: char.urls[1].url
