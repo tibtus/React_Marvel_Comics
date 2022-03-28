@@ -20,13 +20,9 @@ const RandomChar = (props) => {
 
     useEffect(() => {
         updateChar();
-        const timerId = setInterval(updateChar, 5000);
-        console.log(timerId);
-
-        return  () => {
-            timerId = clearInterval(updateChar, 5000);
-        } 
-
+        setInterval(updateChar, 5000);
+        
+        
     }, [])
 
 
