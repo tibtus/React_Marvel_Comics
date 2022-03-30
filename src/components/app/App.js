@@ -28,10 +28,10 @@ const App = () => {
                 </ErrorBoundary>
                 <div className="char__content">
                     <ErrorBoundary>
-                        <CharList onCharSelected={onCharSelected} />  {/* передаем метод чтоб записать id */}
+                        <CharList onCharSelected={onCharSelected} />  {/* передаем метод чтоб записать id  */}
                     </ErrorBoundary>
                     <ErrorBoundary>
-                        <CharInfo charId={selectedChar} />  {/* получаем id со state и передаем в props дальше */}
+                        <CharInfo charId={selectedChar} />   {/* получаем id со state и передаем в props дальше  */}
                     </ErrorBoundary>
                 </div>
                 <img className="bg-decoration" src={decoration} alt="vision"/>

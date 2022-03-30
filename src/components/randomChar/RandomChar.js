@@ -1,20 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
 
 
-const RandomChar = (props) => {
-    
+const RandomChar = (props) => {    
  
     const [char, setCharList] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-
-    const marvelService = new MarvelService();
+    const {loading, error, getCharacter, clearError} = useMarvelService();
 
 
 
@@ -29,25 +25,17 @@ const RandomChar = (props) => {
 
     const onCharLoaded = (char) => {  
         setCharList(char);
-        setLoading(loading => false);
+       
     }
 
-    const onCharListLoading = () => {
-        setLoading(loading => true);
-    }
 
-    const onError = () => {        
-        setLoading(loading => false);
-        setError(error => true)
-    }
 
     const updateChar = () => {
+        clearError();
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-        onCharListLoading();
-        marvelService
-            .getCharacter(id)
-            .then(onCharLoaded)
-            .catch(onError);
+               
+        getCharacter(id)
+            .then(onCharLoaded);
 
     }
 
