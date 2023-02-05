@@ -5,8 +5,6 @@ Use the package manager [WebPack](https://webpack.js.org) to install.
 npm i 
 ```
 
-
-
 In the project directory, you can run:
 
 ```bash
